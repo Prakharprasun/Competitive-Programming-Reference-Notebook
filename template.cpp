@@ -319,18 +319,40 @@ vector<vector<int>> graphInput(int n, int m) {
 }
 
 vll helper(string& s) {
-    
+    return {0};
 }
 
+char a[3000][3000];
+char b[3000][3000];
 void solve(){
+    int n;
+    cin >> n;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            cin >> a[i][j];
+            b[i][j]=a[i][j];
+        }
+    }
+    for(int i=1;i<=n/2;++i){
+        for(int j=1;j<=n/2;++j){
+            int x=i;int y=j;
+            b[y][n-x+1]=a[x][y];
+        }
+    }
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            cout << b[i][j];
+        }
+        cout << "\n";
+    }
     
 }
 
 int main() {
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    freopen("error.txt", "w", stderr);
+    freopen("inputf.in", "r", stdin);
+    freopen("outputf.in", "w", stdout);
+    freopen("error.in", "w", stderr);
 #endif
 	fastio();
 	ll t=1;
