@@ -1,4 +1,6 @@
-# Competitive-Coding
+# Competitive Programming
+
+All codes are tested on C++20, may fail depending on version and compiler.
 
 ## This repo has stuff inspired/taken by:
 
