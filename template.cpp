@@ -318,34 +318,60 @@ vector<vector<int>> graphInput(int n, int m) {
     return graph;
 }
 
-vll helper(string& s) {
-    return {0};
+string evaluateBinaryExpression(const string &binaryString) {
+    string expression = "";
+    
+    for (size_t i = 0; i < binaryString.size(); ++i) {
+        expression += binaryString[i];
+        if (i < binaryString.size() - 1) {
+            if (i % 2 == 0) {
+                expression += '|';
+            } else {
+                expression += '&';
+            }
+        }
+    }
+
+    stack<int> values;
+    stack<char> ops;
+
+    for (char c : expression) {
+        if (c == '1' || c == '0') {
+            values.push(c - '0');
+        } else {
+            while (!ops.empty() && (ops.top() == '&' || (ops.top() == '|' && c == '|'))) {
+                int right = values.top(); values.pop();
+                int left = values.top(); values.pop();
+                char op = ops.top(); ops.pop();
+                
+                if (op == '&') {
+                    values.push(left & right);
+                } else if (op == '|') {
+                    values.push(left | right);
+                }
+            }
+            ops.push(c);
+        }
+    }
+    while (!ops.empty()) {
+        int right = values.top(); values.pop();
+        int left = values.top(); values.pop();
+        char op = ops.top(); ops.pop();
+
+        if (op == '&') {
+            values.push(left & right);
+        } else if (op == '|') {
+            values.push(left | right);
+        }
+    }
+    return values.top() == 1 ? "YES" : "NO";
 }
 
-char a[3000][3000];
-char b[3000][3000];
-void solve(){
-    int n;
-    cin >> n;
-    for(int i=1;i<=n;i++){
-        for(int j=1;j<=n;j++){
-            cin >> a[i][j];
-            b[i][j]=a[i][j];
-        }
-    }
-    for(int i=1;i<=n/2;++i){
-        for(int j=1;j<=n/2;++j){
-            int x=i;int y=j;
-            b[y][n-x+1]=a[x][y];
-        }
-    }
-    for(int i=1;i<=n;i++){
-        for(int j=1;j<=n;j++){
-            cout << b[i][j];
-        }
-        cout << "\n";
-    }
-    
+void solve() {
+    long long n;
+    string s;
+    cin >> n >> s;
+    cout << evaluateBinaryExpression(s) << "\n";
 }
 
 int main() {
@@ -356,7 +382,7 @@ int main() {
 #endif
 	fastio();
 	ll t=1;
-    // cin >> t;
+    cin >> t;
     for (int i = 0; i < t; i++) {
         // cout << "Case #" << i+1 << ":";
         solve();

@@ -4,6 +4,7 @@
 using namespace std;
 
 vector<int> o[26];
+int ans[26];
 int main(){
 #ifndef ONLINE_JUDGE
     freopen("inputf.in", "r", stdin);
@@ -26,8 +27,6 @@ int main(){
 				ans1+=ans1+1;
 			}
 			ans1+=o[i][j]-o[i][j-1]-1;
-			
-			
 		}
 		ans+=ans1;
 	}
