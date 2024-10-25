@@ -2,42 +2,43 @@
 #define int long long
 using namespace std;
 
-const int MOD = 1e9 + 7;
-
-long long binpow(long long a, long long b, long long m) {
-    a %= m;
-    long long res = 1;
-    while (b > 0) {
-        if (b & 1)
-            res = res * a % m;
-        a = a * a % m;
-        b >>= 1;
+bool cmp(pair<int,int> a,pair<int,int> b){
+    if(min(a.first,a.second)==min(b.first,b.second)){
+        return(max(a.first,a.second)<max(b.first,b.second));
     }
-    return res;
+    return(min(a.first,a.second)<min(b.first,b.second));
 }
 
 int32_t main() {
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin >> n;
+        int n,k;
+        cin >> n >> k;
         vector<int> a(n);
-        map<int, int> prefix_sum_map;
-        int prefix_sum = 0;
-        int segment_count = 0;
-        prefix_sum_map[0] = 1;
-        for (auto &i : a) {
+        for(auto &i : a){
             cin >> i;
-            prefix_sum += i;
-            if (prefix_sum_map[prefix_sum] > 0) {
-                segment_count++;
-                prefix_sum_map.clear();
-                prefix_sum_map[0] = 1;
-                prefix_sum = 0;
-            }
-            prefix_sum_map[prefix_sum]++;
         }
-        cout << segment_count << '\n';
+
+        sort(a.begin(),a.end());
+
+        int dp[n+1];
+        memset(dp, 0 , sizeof(dp));
+
+        for(int i = 0 ; i<n ; i++){
+            if(i!=0)
+            dp[i+1]= dp[i] + a[i]*(n-i)-a[i-1]*(n-i);
+            else dp[i+1]= dp[i] + a[i]*(n-i);
+        }
+
+        
+        for(int i = 0; i<n+1 ; i++){
+            if(dp[i]>=k){
+                cout << k + i -1 << '\n';
+                break;
+            }
+        }
+        
     }
 }
+
