@@ -1,35 +1,48 @@
-//By Prakhar Prasun
+#include "bits/stdc++.h"
 
-#include <bits/stdc++.h>
-using namespace std;
-
-vector<int> o[26];
-int ans[26];
-int main(){
-#ifndef ONLINE_JUDGE
-    freopen("inputf.in", "r", stdin);
-    freopen("outputf.in", "w", stdout);
+#ifdef ONPC
+#include "DEBUG.h"
+#else
+#define debug(...)
 #endif
-	ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-	
-	string s;
-	cin >> s;
-	
-	int ans=0;
-	for(int i=0;i<int(s.size());i++){
-		o[s[i]-'A'].push_back(i);
-	}
-	for(int i=0;i<26;i++){
-		int ans1=0;
-		
-		for(int j=1;j<int(o[i].size());j++){
-			if(o[i][j]>=2){
-				ans1+=ans1+1;
-			}
-			ans1+=o[i][j]-o[i][j-1]-1;
-		}
-		ans+=ans1;
-	}
 
-	cout << ans;
+#define sz(a) ((int)((a).size()))
+#define all(x) (x).begin(), (x).end()
+ 
+using namespace std;
+mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
+ 
+typedef long long ll;
+typedef long double ld;
+
+void helper(vector<vector<int>> &ans, vector<int> &a, vector<int>& nums, int i) {
+    if(i==sz(nums)){
+        ans.push_back(a);
+        return;
+    }
+    a.push_back(nums[i]);
+    helper(ans,a,nums,i+1);
+    a.pop_back();
+    helper(ans,a,nums,i+1);
+}
+
+int solve() {
+    ll n;
+    cin >> n;
+    return 0;
+}
+ 
+int32_t main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int TET = 1e9;
+    cin >> TET;
+    for (int i = 1; i <= TET; i++) {
+        if (solve()) {
+            break;
+        }
+    }
+    #ifdef ONPC
+        cerr << endl << "finished in " << clock() * 1.0 / CLOCKS_PER_SEC << " sec" << endl;
+    #endif
 }

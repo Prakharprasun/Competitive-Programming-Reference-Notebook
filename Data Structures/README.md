@@ -33,3 +33,5 @@ Uses hashing
 ## Iterators
 
 Points to memory adresses like (for eg.: .begin() / .end())
+
+- While giving contests avoid using hash data structures as they are prone to hacks if hash functions can be exploited.

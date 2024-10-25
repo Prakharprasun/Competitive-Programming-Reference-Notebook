@@ -1,5 +1,5 @@
 #pragma GCC optimize("Ofast,no-stack-protector,unroll-loops,fast-math")
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
 using namespace std;
@@ -317,69 +317,15 @@ vector<vector<int>> graphInput(int n, int m) {
     }
     return graph;
 }
-
-string evaluateBinaryExpression(const string &binaryString) {
-    string expression = "";
-    
-    for (size_t i = 0; i < binaryString.size(); ++i) {
-        expression += binaryString[i];
-        if (i < binaryString.size() - 1) {
-            if (i % 2 == 0) {
-                expression += '|';
-            } else {
-                expression += '&';
-            }
-        }
-    }
-
-    stack<int> values;
-    stack<char> ops;
-
-    for (char c : expression) {
-        if (c == '1' || c == '0') {
-            values.push(c - '0');
-        } else {
-            while (!ops.empty() && (ops.top() == '&' || (ops.top() == '|' && c == '|'))) {
-                int right = values.top(); values.pop();
-                int left = values.top(); values.pop();
-                char op = ops.top(); ops.pop();
-                
-                if (op == '&') {
-                    values.push(left & right);
-                } else if (op == '|') {
-                    values.push(left | right);
-                }
-            }
-            ops.push(c);
-        }
-    }
-    while (!ops.empty()) {
-        int right = values.top(); values.pop();
-        int left = values.top(); values.pop();
-        char op = ops.top(); ops.pop();
-
-        if (op == '&') {
-            values.push(left & right);
-        } else if (op == '|') {
-            values.push(left | right);
-        }
-    }
-    return values.top() == 1 ? "YES" : "NO";
+ll n,k;
+long long f(vector<ll> a, ll mid){
+    return a[mid]*(n);
 }
-
 void solve() {
-    long long n;
-    string s;
-    cin >> n >> s;
-    cout << evaluateBinaryExpression(s) << "\n";
+    cout << "bro";
 }
 
 int main() {
-#ifndef ONLINE_JUDGE
-    freopen("inputf.in", "r", stdin);
-    freopen("outputf.in", "w", stdout);
-    freopen("error.in", "w", stderr);
-#endif
 	fastio();
 	ll t=1;
     cin >> t;

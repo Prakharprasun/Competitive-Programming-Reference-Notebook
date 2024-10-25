@@ -1,0 +1,8 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     a.out
+relocations:
+  - { offset: 0x16C49, size: 0x8, addend: 0x0, symName: __ZStL8__ioinit, symObjAddr: 0x64449, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offset: 0x16D32, size: 0x8, addend: 0x0, symName: __ZL3MOD, symObjAddr: 0x120, symBinAddr: 0x100003F20, symSize: 0x0 }
+  - { offset: 0x16EDB, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003D80, symSize: 0x11C }
+...
