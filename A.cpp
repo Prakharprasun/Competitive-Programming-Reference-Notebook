@@ -12,8 +12,8 @@
 using namespace std;
 mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
  
-typedef long long ll;
-typedef long double ld;
+#define int long long
+#define double long double
 
 void helper(vector<vector<int>> &ans, vector<int> &a, vector<int>& nums, int i) {
     if(i==sz(nums)){
@@ -27,8 +27,9 @@ void helper(vector<vector<int>> &ans, vector<int> &a, vector<int>& nums, int i) 
 }
 
 int solve() {
-    ll n;
+    int n;
     cin >> n;
+    cout << n;
     return 0;
 }
  
