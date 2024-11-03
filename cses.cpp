@@ -13,33 +13,33 @@ using namespace std;
 #define f first
 #define s second
 
-int32_t main() {
-    int t;
-    cin >> t;
-    while (t--){
+int32_t main(){
 
-        int n;
-        cin >> n;
-        int ans = 0;
-        vector<int> a(n);
-        map<int,int> m;
-        for(auto &i : a){
-            cin >> i;
-        }
-        int ma = -1;
+    int n,k,q;
+    cin >> n >> k >> q;
 
-        for(auto i : a){
-            m[i]++;
-        }
-        for(auto i : m){
-            ma = max(ma,i.s);
-        }
-        
-        ans = (ceil(log2(ceil((double)n/ma))));
-        //ans = ceil((n-ma)/ma);
-        ans += (n-ma);
+    vector<vector<int>> a(n, vector<int> (k));
 
-         cout << ans << '\n';
-    } 
+    for(int i = 0 ; i < n ; i++) {
+        for(int j = 0 ; j<k ; j++){
+            cin >> a[i][j];
+        }
+    }
+
+    for(int i = 1 ; i < n ; i++) {
+        for(int j = 0 ; j<k ; j++){
+            a[i][j] = a[i][j] | a[i-1][j];
+        }
+    }
+
+    debug(a);
+
+    while(q--){
+        int t;
+        cin >> t;
+        while(t--){
+            int x,z;char y;
+            cin >> x >> y >> z;
+        }
+    }
 }
-
