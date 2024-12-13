@@ -1,0 +1,1 @@
+{"name":"Local: sol","url":"/Users/prakharprasun/Developer/Competitive-Coding/sol.cpp","tests":[{"id":1732636953183,"input":"10\nP 2\nP 5\nB 8\nP 14\nB 5\nB 9\nB 3\nP 2\nB 1\nB 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/prakharprasun/Developer/Competitive-Coding/sol.cpp","group":"local","local":true}

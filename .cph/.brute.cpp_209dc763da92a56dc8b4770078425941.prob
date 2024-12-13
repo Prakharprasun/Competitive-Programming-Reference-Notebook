@@ -1,0 +1,1 @@
+{"name":"Local: brute","url":"/Users/prakharprasun/Developer/Competitive-Coding/brute.cpp","tests":[{"id":1732636976136,"input":"10\nP 2\nP 5\nB 8\nP 14\nB 5\nB 9\nB 3\nP 2\nB 1\nB 2","output":"YES\nNO\nNO\nYES\nNO\nYES"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/prakharprasun/Developer/Competitive-Coding/brute.cpp","group":"local","local":true}

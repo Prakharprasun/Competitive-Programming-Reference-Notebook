@@ -12,3 +12,4 @@ All codes are tested on C++20, may fail depending on version and compiler.
 6. cp-algorithms ( https://cp-algorithms.com/ )
 7. Codeforces
 8. Anshul Johri( https://codeforces.com/blog/entry/125435 )
+9. https://github.com/bhupixb/Stress-Testing-bash-script/tree/master
