@@ -181,6 +181,7 @@ int binpow(int a , int b){
     }
     return ans;
 }
+
 const int n = 48;
 int dp[n][n];
 bool vis[n][n];
@@ -188,7 +189,7 @@ int helper(int i, int j, vector<vector<char>> &a) {
     if (vis[i][j]) return dp[i][j];
     vis[i][j] = true;
 
-    // Base case: Found '9'
+    // Base case
     if (a[i][j] - '0' == 9) {
         return dp[i][j] = 1;
     }
@@ -202,7 +203,7 @@ int helper(int i, int j, vector<vector<char>> &a) {
         // Bounds checking
         if (newi < 0 || newi >= n || newj < 0 || newj >= n) continue;
 
-        // Check if valid progression
+        // Check 
         if ((a[newi][newj] - '0') == (a[i][j] - '0' + 1)) {
             dp[i][j] += helper(newi, newj, a);
         }
@@ -226,8 +227,8 @@ void Solve() {
     frange(i,n) {
         frange(j,n) {
             if (a[i][j] == '0') {
-                memset(vis, 0, sizeof(vis)); // Reset vis array
-                memset(dp, 0, sizeof(dp));   // Reset dp array
+                memset(vis, 0, sizeof(vis)); // reset vis
+                memset(dp, 0, sizeof(dp));   // reset dp
 
                 ans+=helper(i,j,a);
             }
