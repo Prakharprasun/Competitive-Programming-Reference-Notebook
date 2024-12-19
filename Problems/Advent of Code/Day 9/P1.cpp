@@ -190,63 +190,43 @@ void Solve() {
 
     //Solution
     int c = 0;
-    vector<vector<string>> news;
-
+    vector<string> news;
     frange(i, s.length()) {
         if (i%2==0) {
-            vector<string> news1;
             frange(j,(s[i] - '0')) {
-                news1.pb(to_string(c));
+                news.pb(to_string(c));
             }
-            news.pb(news1);
             c++;
         } else {
-            vector<string> news2;
             frange(j,(s[i] - '0')) {
-                news2.pb(".");
+                news.pb(".");
             }
-            news.pb(news2);
         }
     }
+    debug(news);
+    int n = 0;
+    for (auto i : news ) {
+        if (i != ".") n++;
+    }
 
-    frange(i, 1) {
-        for (int i = 0 ; i<news.size() ; i++) {
-            for (int j = 0; j < news[i].size();) {
-                bool increment = true;
-                if (news[i][j] == ".") {
-                    for (int k = news.size() - 1; k >= 0; k--) {
-                        if (news[k].size() == 0 || news[k][news[k].size()-1] == ".") continue;
-
-                        if (news[k].size() <= news[i].size() - j && k>=i) {
-
-                            int inij = j;
-                            for (int l = 0; l < (news[k].size()) ; l++,j++) {
-
-                                swap(news[i][j], news[k][l]);
-                                increment = false;
-                            }
-                        }
-                    }
+    frange(i, n) {
+        if (news[i] == ".") {
+            for (int j = news.size()-1; j >= 0; j--) {
+                if (news[j] != ".") {
+                    swap(news[i], news[j]);
+                    break;
                 }
-                if (increment) {j++;}
             }
         }
     }
-    vector <int> a;
-    for (auto i : news) {
-        for (auto j : i) {
-            if (j == "") continue;
-            if (j== ".") {a.pb(0);continue;}
-            a.pb(stoll(j));
-        }
-    }
-    
+
     i128 ans = 0;
-    frange(i, a.size()) {
-        ans += i*a[i];
+    frange(i, n) {
+        ans += i*stoll(news[i]);
     }
 
     printi128(ans);
+
 }
 // Main function
 int32_t main() {
